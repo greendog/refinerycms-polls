@@ -10,17 +10,13 @@ module Refinery
 
       validates :title, :presence => true, :uniqueness => { :scope => :question_id}
       
-      attr_accessible :title, :question_id, :position
       attr_accessor :locale
       
       belongs_to :question, :class_name => '::Refinery::Polls::Question'
       has_many :votes, :class_name => '::Refinery::Polls::Vote'
       
-      default_scope order("position ASC")
+      default_scope {order("position ASC")}
 
-      class Translation
-        attr_accessible :locale
-      end
       
       # Get a string to represent a dom id
       #

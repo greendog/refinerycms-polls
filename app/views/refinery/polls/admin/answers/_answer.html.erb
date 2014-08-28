@@ -1,16 +1,6 @@
 <li class='clearfix record <%= cycle("on", "on-hover") %>' id="<%= dom_id(answer) -%>">
   <span class='title'>
     <%= answer.title %>
-
-    <% if Refinery.i18n_enabled? and Refinery::I18n.frontend_locales.many? %>
-      <span class='locales'>
-        <% answer.translations.each do |translation| %>
-          <%= link_to refinery_icon_tag("flags/#{translation.locale}.png", :size => '16x11'),
-                      refinery.edit_polls_admin_question_answer_path(answer.question, answer, :switch_locale => translation.locale),
-                      :class => 'locale' if translation.title.present? %>
-        <% end %>
-      </span>
-    <% end %>
   </span>
   <span class='actions'>
 

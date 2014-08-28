@@ -1,4 +1,4 @@
-Refinery::Core::Engine.routes.append do
+Refinery::Core::Engine.routes.draw do
 
   # Frontend routes
   namespace :polls do
@@ -9,15 +9,13 @@ Refinery::Core::Engine.routes.append do
       end
     end
   end
-  # namespace :poll_answers do
-  #   resources :polls, :path => '', :only => [:index, :show]
-  # end
+
 
   # Admin routes
   namespace :polls, :path => '' do
-    namespace :admin, :path => 'refinery' do
+    namespace :admin, :path => Refinery::Core.backend_route do
       #hack for delete action in admin, it can't handle nested routes
-      match "/refinery/questions/:question_id/answers" => "refinery/polls/admin/answers#index", :as => :answer
+      get "/refinery/questions/:question_id/answers" => "refinery/polls/admin/answers#index", :as => :answer
       resources :questions, :except => :show do
         collection do
           post :update_positions

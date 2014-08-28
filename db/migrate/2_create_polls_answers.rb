@@ -1,6 +1,6 @@
 class CreatePollsAnswers < ActiveRecord::Migration
   def self.up
-    create_table Refinery::Polls::Answer.table_name, :id => true do |t|
+    create_table Refinery::Polls::Answer.table_name do |t|
       t.string :title
       t.integer :votes_count, :default => 0
       t.integer :position

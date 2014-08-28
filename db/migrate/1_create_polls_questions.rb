@@ -2,7 +2,7 @@ class CreatePollsQuestions < ActiveRecord::Migration
 
   def up
 
-    create_table Refinery::Polls::Question.table_name, :id => true do |t|
+    create_table Refinery::Polls::Question.table_name do |t|
       t.string :title
       t.datetime :start_date
       t.datetime :end_date

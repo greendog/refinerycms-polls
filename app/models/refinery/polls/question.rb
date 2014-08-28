@@ -11,15 +11,10 @@ module Refinery
 
       validates :title, :presence => true, :uniqueness => true
       
-      attr_accessible :title, :start_date, :end_date, :position
       attr_accessor :locale
       
-      default_scope order("position ASC")
-      
-      class Translation
-        attr_accessible :locale
-      end
-      
+      default_scope {order("position ASC")}
+
       def self.translated
         with_translations(::Globalize.locale)
       end

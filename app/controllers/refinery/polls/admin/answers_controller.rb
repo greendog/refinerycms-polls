@@ -10,6 +10,7 @@ module Refinery
         def index
           paginate_all_answers
         end
+
         def edit
           
         end
@@ -59,8 +60,7 @@ module Refinery
         end
 
         def paginate_all_answers
-           @answers = ::Refinery::Polls::Answer.paginate :page => params[:page], 
-                                                         :conditions => {:question_id => @question.id} if Refinery::Polls::Admin::QuestionsController.pageable? 
+           @answers = ::Refinery::Polls::Answer.where(:question_id => @question.id).paginate(:page => params[:page]) if Refinery::Polls::Admin::QuestionsController.pageable?
         end
       end
     end

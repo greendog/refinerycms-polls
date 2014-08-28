@@ -7,8 +7,6 @@ module Refinery
       belongs_to :question, :class_name => '::Refinery::Polls::Question'
       belongs_to :answer, :class_name => '::Refinery::Polls::Answer', :counter_cache => true
       
-      attr_accessible :question_id, :answer_id, :ip
-      
       # Create Vote for Question, Answer and IP
       #
       # @param [::Refinery::Polls::Question] Question object
